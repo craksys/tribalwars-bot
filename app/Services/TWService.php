@@ -46,7 +46,7 @@ class TWService
 
     public function getData()
     {
-        $uri = "https://" . $this->world . ".tribalwars.com.br" . $this->gameUri . "screen=api&ajax=resouces";
+        $uri = "https://" . $this->world . ".plemiona.pl" . $this->gameUri . "screen=api&ajax=resouces";
         echo $this->cookie;
         $response = $this->client->request('GET', $uri, [
             'headers' => [
@@ -61,7 +61,7 @@ class TWService
 
     public function queueBuilding(string $build)
     {
-        $uri = "https://" . $this->world . ".tribalwars.com.br" . $this->gameUri . "screen=main&ajaxaction=upgrade_building&id=" . $build . "&type=main&h=" . $this->postKey;
+        $uri = "https://" . $this->world . ".plemiona.pl" . $this->gameUri . "screen=main&ajaxaction=upgrade_building&id=" . $build . "&type=main&h=" . $this->postKey;
 
         $response = $this->client->request('POST', $uri);
 
@@ -71,7 +71,7 @@ class TWService
 
     public function getBuildingsInformations()
     {
-        $uri = $uri = "https://" . $this->world . ".tribalwars.com.br" . $this->gameUri . "screen=main&action=cancel&id=1&type=main&h=" . $this->postKey;
+        $uri = $uri = "https://" . $this->world . ".plemiona.pl" . $this->gameUri . "screen=main&action=cancel&id=1&type=main&h=" . $this->postKey;
 
         $response = $this->client->request('POST', $uri);
         $data = $response->getBody();
@@ -105,7 +105,7 @@ class TWService
 
     public function queueUnits(string $unitType, int $quantity)
     {
-        $uri = $uri = "https://" . $this->world . ".tribalwars.com.br" . $this->gameUri . "screen=barracks&ajaxaction=train&mode=train&h=" . $this->postKey;
+        $uri = $uri = "https://" . $this->world . ".plemiona.pl" . $this->gameUri . "screen=barracks&ajaxaction=train&mode=train&h=" . $this->postKey;
         $response = $this->client->request('POST', $uri, [
             'form_params' => [
                 sprintf('units[%s]', $unitType) => $quantity
@@ -118,7 +118,7 @@ class TWService
 
     public function getQueueBuilds()
     {
-        $uri = $uri = "https://" . $this->world . ".tribalwars.com.br" . $this->gameUri . "screen=main";
+        $uri = $uri = "https://" . $this->world . ".plemiona.pl" . $this->gameUri . "screen=main";
         $response = $this->client->request('GET', $uri);
 
         $data = $response->getBody();
@@ -146,7 +146,7 @@ class TWService
 
     public function getPostkey()
     {
-        $uri = $uri = "https://" . $this->world . ".tribalwars.com.br" . $this->gameUri . "screen=main";
+        $uri = $uri = "https://" . $this->world . ".plemiona.pl" . $this->gameUri . "screen=main";
         $response = $this->client->request('GET', $uri);
         $data = $response->getBody();
 
@@ -158,7 +158,7 @@ class TWService
 
     public function getBarracksInformation()
     {
-        $uri = $uri = "https://" . $this->world . ".tribalwars.com.br" . $this->gameUri . "screen=barracks";
+        $uri = $uri = "https://" . $this->world . ".plemiona.pl" . $this->gameUri . "screen=barracks";
         $response = $this->client->request('GET', $uri);
 
         $data = $response->getBody();
@@ -189,7 +189,7 @@ class TWService
 
     public function login(string $username, string $password)
     {
-        $uri = "https://www.tribalwars.com.br/page/auth";
+        $uri = "https://www.plemiona.pl/page/auth";
         $response = $this->client->request('POST', $uri, [
             'form_params' => [
                 'username' => $username,
@@ -210,7 +210,7 @@ class TWService
 
     public function getWorlds()
     {
-        $uri = "https://www.tribalwars.com.br";
+        $uri = "https://www.plemiona.pl";
         $response = $this->client->request('GET', $uri);
         $original = $response->getBody();
 
@@ -234,7 +234,7 @@ class TWService
     {
         $this->world = strtolower($world);
 
-        $uri = "https://www.tribalwars.com.br/page/play/" . $this->world;
+        $uri = "https://www.plemiona.pl/page/play/" . $this->world;
         $response = $this->client->request("POST", $uri);
         $data = json_decode($response->getBody(), true);
 
